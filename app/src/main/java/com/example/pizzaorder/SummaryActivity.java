@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.activity.EdgeToEdge;
@@ -31,5 +32,12 @@ public class SummaryActivity extends AppCompatActivity {
                 finish();
             }
         });
+        TextView tvSummary = findViewById(R.id.tvSummary);
+        Intent intent = getIntent();
+        String size = intent.getStringExtra("size");
+        String crust = intent.getStringExtra("Crust");
+        int price = intent.getIntExtra("price",0);
+
+        tvSummary.setText("ההזמנה שלך: פיצה " + size + " ," + crust + "  נדרש לתשלום:  "  +  price);
     }
 }
