@@ -25,6 +25,7 @@ public class SummaryActivity extends AppCompatActivity {
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
             return insets;
         });
+        Button btnPay = findViewById(R.id.btnPay);
         Button btnBack = findViewById(R.id.btnBack);
         btnBack.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -39,5 +40,17 @@ public class SummaryActivity extends AppCompatActivity {
         int price = intent.getIntExtra("price",0);
 
         tvSummary.setText("ההזמנה שלך: פיצה " + size + " ," + crust + "  נדרש לתשלום:  "  +  price);
+
+        btnPay.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(SummaryActivity.this, PaymentActivity.class);
+                intent.putExtra("size", size);
+                intent.putExtra("Crust", crust);
+                intent.putExtra("price",price);
+                startActivity(intent);
+                finish();
+            }
+        });
     }
 }
